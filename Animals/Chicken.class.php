@@ -6,7 +6,6 @@ require_once  __DIR__.DIRECTORY_SEPARATOR.'Animal.class.php';
 
 class Chicken extends Animal 
 {
-    
     // Private class variables because these only apply to this class and we do not want them changed manually when the class is used
     private $sound;          // String
     private $isFreeRange;    // Bool
@@ -205,5 +204,4 @@ class Chicken extends Animal
         echo parent::howAreYouDoing();
         die(); // Irony
     }
-    
 }
