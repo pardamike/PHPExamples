@@ -2,6 +2,8 @@
 
 require_once 'Chicken.class.php';
 
+
+// Some generic testing you can run in the browser
 $Chicken = new Chicken("kaw kaaaaw", true, true);
 
 echo $Chicken->howAreYouDoing();

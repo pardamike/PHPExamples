@@ -68,7 +68,7 @@ class Animal {
               $status = "El Muerto";
               break;
           default:
-              $status = "Error";  // In theory we sould never get here
+              $status = "Error";  // In theory we should never get here
               break;
       }
       return $status;
