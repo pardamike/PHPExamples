@@ -32,7 +32,7 @@ class ChickenTest extends TestCase
     {
         $Chicken = new Chicken("kaw kaw", true, true);
         $eggResult = $Chicken->layEggs();
-        // Should always lay eggs because the chick is initialized with an egg laying capability of 30 eggs
+        // Should always lay eggs because the chicken is initialized with an egg laying capability of 30 eggs
         $this->assertTrue($eggResult->result);
     }
     
