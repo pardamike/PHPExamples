@@ -131,20 +131,19 @@ class Chicken extends Animal {
         // Check and see if the chicken can lay eggs (if you have made it unhappy too much, it will not lay eggs)
         if($this->maxEggs <= 0) {
             $result->eggsLaid = 0;
-            $result->message = "The chicken is refusing to lay eggs.  Feed it or make it free range to increase egg production";
+            $result->message = "<br>The chicken is refusing to lay eggs.  Feed it or make it free range to increase egg production<br>";
             $result->result = false;
         } else {
             // Chicken can only lay up to its max eggs... if it is free range it will lay 2X more eggs
             $numberOfEggs = rand(1, $this->howManyEggsCanYouLay());    
             
             $result->eggsLaid = $numberOfEggs;
-            $result->message = "The chicken has laid $numberOfEggs eggs!";
+            $result->message = "<br>The chicken has laid $numberOfEggs eggs!<br>";
             $result->result = true;
             
             // Laying eggs is laborous... the chicken is not happy about this
             $this->makeUnhappy();                       
         }
-        echo "<br>" . $result->message . "<br>";
         return $result;
     }
     
