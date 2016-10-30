@@ -2,17 +2,17 @@
 /* @author Mike Parda
  * Animal class... parent class for creating new, generic animals
  */
-
-class Animal {
-
+class Animal
+{
   // Generic variables all animals would need
   protected $name;
   protected $healthLevel;
   protected $weight;
 
   // All params are optional, if not set they will get the defaults defined in the contructor
-  // Constructor is protected because we do not want to be making new Animals, this is just a base class and must be extended
-  protected function __construct($name=false, $healthLevel=false, $weight=false) {
+  // Constructor is protected because we do not want to be making new Animals, this is just a base class and should be extended
+  protected function __construct($name=false, $healthLevel=false, $weight=false) 
+  {
       // Default name of "Le Animal" for no particular reason
       $animalName = ($name ? $name : "Le Animal");
       
@@ -31,27 +31,27 @@ class Animal {
           echo "Failed to create new parent Animal class, failed with message: " . $ex->getMessage();
           die();
       }
-      
   }
-  
   // Basic getters and setters below should we need to change or get any of thie animals basic info:
-  
-  
   // Public getters
-  public function getWeight() {
+  public function getWeight() 
+  {
       return $this->weight;
   }
   
-  public function getHealthLevel() {
+  public function getHealthLevel()
+  {
       return $this->healthLevel;
   }
 
-  public function getName() {
+  public function getName() 
+  {
       return $this->name;
   }
   
   // Random function to check how the animal is doing... returns string of the animals status
-  public function howAreYouDoing() {
+  public function howAreYouDoing() 
+  {
       $health = $this->healthLevel;
       $status = '';
       switch (true) {
@@ -73,10 +73,10 @@ class Animal {
       }
       return $status;
   }
-  
-  
+
   // Protected setters so only children can use them
-  protected function setWeight($newWeight) {
+  protected function setWeight($newWeight) 
+  {
       if(gettype($newWeight) == "integer") {
         $this->name = $newWeight;
       } else {
@@ -85,7 +85,8 @@ class Animal {
       $this->weight = $newWeight;
   }
 
-  protected function setHealthLevel($newHealth) {
+  protected function setHealthLevel($newHealth) 
+  {
       if(gettype($newHealth) == "integer") {
         $this->name = $newHealth;
       } else {
@@ -94,7 +95,8 @@ class Animal {
       $this->healthLevel = $newHealth;
   }
 
-  protected function setName($newName) {
+  protected function setName($newName) 
+  {
       if(gettype($newName) == "string") {
         $this->name = $newName;
       } else {

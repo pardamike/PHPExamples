@@ -2,10 +2,10 @@
 /* @author Mike Parda
  * Chicken class for creating new chickens, child to Animal class
  */
+require_once  __DIR__.DIRECTORY_SEPARATOR.'Animal.class.php';
 
-require_once 'Animal.class.php';
-
-class Chicken extends Animal {
+class Chicken extends Animal 
+{
     
     // Private class variables because these only apply to this class and we do not want them changed manually when the class is used
     private $sound;          // String
@@ -16,10 +16,10 @@ class Chicken extends Animal {
     const DEFAULT_ADD_EGGS = 10;
     const DEFAULT_MINUS_EGGS = 10;
 
-
     // Params for parent are optional since the parent class will set them if they are not sent in or are sent incorrectly
     // We will assume child class (Chicken) has params that are sent in, will do some error handeling if they are not
-    public function __construct($sound, $isFreeRange, $isHappy, $name=false, $healthLevel=false, $weight=false) {
+    public function __construct($sound, $isFreeRange, $isHappy, $name=false, $healthLevel=false, $weight=false) 
+    {
         parent::__construct($name, $healthLevel, $weight);
         
         // Set the Chicken up... handle any inproper inputs for each variable
@@ -35,16 +35,17 @@ class Chicken extends Animal {
     }
     
     // Generic and boring setters and getters for the Chicken class
-    
     // Setters (private so that they cannot be called in the code, they must be changed with certain public methods of this class)
-    private function setSound($sound) {
+    private function setSound($sound) 
+    {
         if(gettype($sound) !== "string") {
             throw new Exception("Sound must be a string, type of " . gettype($sound) . " was sent in.");
         }
         $this->sound = $sound;
     }
     
-    private function setIsHappy($isHappy) {
+    private function setIsHappy($isHappy) 
+    {
         if(gettype($isHappy) == "boolean") {
             $this->isHappy = $isHappy;
         } else {
@@ -52,7 +53,8 @@ class Chicken extends Animal {
         }
     }
     
-    private function setIsFreeRange($isFreeRange) {
+    private function setIsFreeRange($isFreeRange) 
+    {
         if(gettype($isFreeRange) == "boolean") {
             $this->isFreeRange = $isFreeRange;
         } else {
@@ -60,7 +62,8 @@ class Chicken extends Animal {
         }
     }
     
-    private function setMaxEggs($eggCount) {
+    private function setMaxEggs($eggCount) 
+    {
         if(gettype($eggCount) == "integer") {
             $this->maxEggs = $eggCount;
         } else {
@@ -69,48 +72,53 @@ class Chicken extends Animal {
     }
     
     // Getters are all public becauae we dont care if anyone else sees them
-    public function getSound() {
+    public function getSound() 
+    {
         return $this->sound;
     }
 
-    public function getIsHappy() {
+    public function getIsHappy() 
+    {
         return $this->isHappy;
     }
 
-    public function getIsFreeRange() {
+    public function getIsFreeRange() 
+    {
         return $this->isFreeRange;
     }
     
-    public function getMaxEggs() {
+    public function getMaxEggs() 
+    {
         return $this->maxEggs;
     }
-    
-    
     // END of setters and getters
-    
-    
-    
-    
+
     // Ok now some fun class-specific methods that we can use in our code
     
     // When the chicken becomes happy, it will lay more eggs, this method should only be accessible by this class and is private
-    private function makeHappy() {
+    // This is private because we only want to have this function called inside this class
+    private function makeHappy() 
+    {
         $this->setMaxEggs(($this->getMaxEggs() + self::DEFAULT_ADD_EGGS));
         $this->setIsHappy(true);
     }
     
     // When the chicken becomes unhappy, it will lay less eggs, this method should only be accessible by this class and is private
-    private function makeUnhappy() {
+    // This is private because we only want to have this function called inside this class
+    private function makeUnhappy() 
+    {
         $this->setMaxEggs(($this->getMaxEggs() - self::DEFAULT_MINUS_EGGS));
         $this->setIsHappy(false);
     }
     
     // Calculate the max eggs a chicken can lay, free range chickens can lay 2X as many eggs
-    public function howManyEggsCanYouLay() {
+    public function howManyEggsCanYouLay() 
+    {
         return ($this->getIsFreeRange() ? ($this->getMaxEggs() * 2) : $this->getMaxEggs());
     }
     
-    public function teachNewNoise($newNoise) {
+    public function teachNewNoise($newNoise) 
+    {
         try {
             $this->setSound($newNoise);
         } catch (Exception $ex) {
@@ -126,7 +134,8 @@ class Chicken extends Animal {
      * NOTE*** if chicken is free range it can lay 2X more eggs, and if it has become unhappy too many times, it will not lay eggs
      * Also laying eggs will cause the chicken to lay less egds next time
      */
-    public function layEggs() {
+    public function layEggs() 
+    {
         $result = new stdClass();
         // Check and see if the chicken can lay eggs (if you have made it unhappy too much, it will not lay eggs)
         if($this->maxEggs <= 0) {
@@ -147,14 +156,16 @@ class Chicken extends Animal {
         return $result;
     }
     
-    public function feedChicken() {
+    public function feedChicken() 
+    {
         // Chickens enjoy food, now it is happy but also getting fatter
         $this->setWeight(($this->getWeight() + 5));
         $this->makeHappy();
     }
 
     // Make it a free range chicken, and thus it will be happy
-    public function setFree() {
+    public function setFree() 
+    {
         if(!$this->getIsFreeRange()) {
             $this->makeHappy();
             $this->setIsFreeRange(true);
@@ -162,7 +173,8 @@ class Chicken extends Animal {
     }
     
     // Putting it in a cage makes it not happy
-    public function putInCage() {
+    public function putInCage() 
+    {
         if($this->getIsFreeRange()) {
             $this->makeUnhappy();
             $this->setIsFreeRange(false);
@@ -170,17 +182,20 @@ class Chicken extends Animal {
     }
     
     // Let the chicken make its noise
-    public function makeNoise() {
+    public function makeNoise() 
+    {
         return $this->getSound()."!!!";
     }
     
     // Rename the chicken
-    public function reNameChicken($newName) {
+    public function reNameChicken($newName) 
+    {
         parent::setName($newName);
     }
     
     // Eat the chicken?...
-    public function cookChicken() {
+    public function cookChicken() 
+    {
         echo "<hr>Cooking chicken...<br>";
         parent::setHealthLevel(0);
         $this->setIsHappy(false);
