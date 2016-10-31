@@ -37,10 +37,11 @@ class Chicken extends Animal
     // Setters (private so that they cannot be called in the code, they must be changed with certain public methods of this class)
     private function setSound($sound) 
     {
-        if(gettype($sound) !== "string") {
+        if(gettype($sound) == "string") {
+            $this->sound = $sound;
+        } else {
             throw new Exception("Sound must be a string, type of " . gettype($sound) . " was sent in.");
         }
-        $this->sound = $sound;
     }
     
     private function setIsHappy($isHappy) 
