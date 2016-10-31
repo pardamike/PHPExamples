@@ -10,7 +10,8 @@ class Animal
   protected $weight;
 
   // All params are optional, if not set they will get the defaults defined in the contructor
-  // Constructor is protected because we do not want to be making new Animals, this is just a base class and should be extended
+  // Constructor is protected because we do not want to be making new Animals, this is just a base class and should be extended...
+  // Alternativly we could make this an abstract class, so it cannot be instantiated, but that is a whole other topic
   protected function __construct($name=false, $healthLevel=false, $weight=false) 
   {
       // Default name of "Le Animal" for no particular reason
