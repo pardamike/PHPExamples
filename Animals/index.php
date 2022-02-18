@@ -4,24 +4,24 @@
  */
 require_once 'Chicken.class.php';
 
-$Chicken = new Chicken("kaw kaaaaw", true, true);
+$Chicken = new Chicken('kaw kaaaaw', true, true);
 
 echo $Chicken->howAreYouDoing();
-echo "<br>";
+echo '<br>';
 echo $Chicken->makeNoise();
-$Chicken->reNameChicken("John");
-echo "<br>";
+$Chicken->reNameChicken('John');
+echo '<br>';
 echo $Chicken->getName();
-$Chicken->teachNewNoise("cokadoodledoooo");
-echo "<br>";
+$Chicken->teachNewNoise('cokadoodledoooo');
+echo '<br>';
 echo $Chicken->makeNoise();
-echo "<br>";
+echo '<br>';
 echo $Chicken->howManyEggsCanYouLay();
 echo $Chicken->putInCage();
-echo "<br>";
+echo '<br>';
 echo $Chicken->howManyEggsCanYouLay();
 echo $Chicken->setFree();
-echo "<br>";
+echo '<br>';
 echo $Chicken->howManyEggsCanYouLay();
 $layEggs = $Chicken->layEggs();
 echo $layEggs->message;
